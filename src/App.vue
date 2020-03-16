@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="example">{{ msg }}</div>
+    <div class="test"></div>
     <HelloWorld msg="这是传递的msg" />
     <img src="./assets/logo.png" />
     <router-link to="/router1">router1</router-link>
@@ -38,8 +39,20 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+@green: #5fbc0e;
 .example {
-  color: red;
+  color: @green;
+}
+.border-radius (@radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+.test {
+  width: 100px;
+  height: 100px;
+  background: @green;
+  .border-radius(50px);
 }
 </style>

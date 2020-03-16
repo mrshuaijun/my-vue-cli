@@ -29,8 +29,8 @@ const baseConfig = {
         // }
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+        test: /\.(css|less)$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
       },
       {
         test: /\.(jpg|png|gif|bmp|jpeg|svg)$/,
