@@ -84,6 +84,7 @@ const baseConfig = {
       }
     })
   ],
+  // 分割代码
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -102,10 +103,17 @@ const baseConfig = {
   },
   resolve: {
     extensions: ['.js', '.css', '.vue'],
+    // 配置别名
     alias: {
       vue: 'vue/dist/vue.js',
-      '@component': path.resolve(__dirname, './src/components')
+      '@component': path.resolve(__dirname, './src/components'),
+      '@pages': path.resolve(__dirname, './src/pages')
     }
+  },
+  // 配置开发服务器
+  devServer: {
+    // 防止vue-router本地刷新404
+    historyApiFallback: true
   }
 }
 
