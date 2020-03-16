@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
-    "dev:server": "webpack-dev-server --mode development"
+    "dev:server": "webpack-dev-server --mode development",
+    "lint": "eslint --fix --ext .js,.vue src"
   },
   "keywords": [],
   "author": "",

@@ -12,7 +12,6 @@
     <h1>Vuex state: {{ count }}</h1>
   </div>
 </template>
-
 <script>
 import HelloWorld from '@component/Helloworld.vue'
 import { mapState } from 'vuex'
