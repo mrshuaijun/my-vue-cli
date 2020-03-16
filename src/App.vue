@@ -3,6 +3,7 @@
     <div class="example">{{ msg }}</div>
     <HelloWorld msg="这是传递的msg" />
     <img src="./assets/logo.png" />
+    <h1>1111</h1>
   </div>
 </template>
 
@@ -12,7 +13,7 @@ export default {
   components: {
     HelloWorld
   },
-  data() {
+  data () {
     return {
       msg: 'Hello world!'
     }
