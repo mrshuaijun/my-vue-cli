@@ -6,11 +6,15 @@
     <router-link to="/router1">router1</router-link>
     <router-link to="/router2">router2</router-link>
     <router-view></router-view>
+    <button @click="add">+1</button>
+    <button @click="des">-1</button>
+    <h1>Vuex state: {{ count }}</h1>
   </div>
 </template>
 
 <script>
 import HelloWorld from '@component/Helloworld.vue'
+import { mapState } from 'vuex'
 export default {
   components: {
     HelloWorld
@@ -18,6 +22,17 @@ export default {
   data() {
     return {
       msg: 'Hello world!'
+    }
+  },
+  computed: {
+    ...mapState(['count'])
+  },
+  methods: {
+    add() {
+      this.$store.dispatch('increment')
+    },
+    des() {
+      this.$store.dispatch('decrement')
     }
   }
 }

@@ -105,7 +105,6 @@ const baseConfig = {
     extensions: ['.js', '.css', '.vue'],
     // 配置别名
     alias: {
-      vue: 'vue/dist/vue.js',
       '@component': path.resolve(__dirname, './src/components'),
       '@pages': path.resolve(__dirname, './src/pages')
     }
@@ -114,6 +113,12 @@ const baseConfig = {
   devServer: {
     // 防止vue-router本地刷新404
     historyApiFallback: true
+  },
+  // 引入外部资源 打包使用cdn 减少包大小
+  externals: {
+    vue: 'Vue',
+    vuex: 'Vuex',
+    'vue-router': 'VueRouter'
   }
 }
 
