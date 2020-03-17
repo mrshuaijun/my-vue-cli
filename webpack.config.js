@@ -9,6 +9,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const baseConfig = {
   entry: path.resolve(__dirname, './src/main.js'),
   module: {
@@ -82,6 +84,12 @@ const baseConfig = {
         removeComments: true, //移除HTML中的注释
         collapseWhitespace: true //删除空白符与换行符
       }
+    }),
+    new ProgressBarPlugin(),
+    new WebpackBuildNotifierPlugin({
+      title: 'myCLI',
+      // logo: path.resolve("./img/favicon.png"),
+      suppressSuccess: true
     })
   ],
   // 分割代码
@@ -112,7 +120,8 @@ const baseConfig = {
   // 配置开发服务器
   devServer: {
     // 防止vue-router本地刷新404
-    historyApiFallback: true
+    historyApiFallback: true,
+    quiet: true
   },
   // 引入外部资源 打包使用cdn 减少包大小
   externals: {
