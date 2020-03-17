@@ -3,6 +3,7 @@ const path = require('path')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const merge = require('webpack-merge')
 const _mode = argv.mode || 'development'
+const port = argv.port || 8080
 const _modeflag = _mode === 'production' ? true : false
 const _mergeConfig = require(`./config/webpack.${_mode}.js`)
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -11,6 +12,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const baseConfig = {
   entry: path.resolve(__dirname, './src/main.js'),
   stats: 'errors-warnings',
@@ -91,6 +93,16 @@ const baseConfig = {
       title: 'myCLI',
       // logo: path.resolve("./img/favicon.png"),
       suppressSuccess: true
+    }),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [`You application is running here http://localhost:${port}`],
+        notes: ['编译完成,可以访问啦!!!!']
+      },
+      onErrors: function(severity, errors) {
+        console.error(severity)
+      },
+      clearConsole: true
     })
   ],
   // 分割代码
@@ -120,6 +132,7 @@ const baseConfig = {
   },
   // 配置开发服务器
   devServer: {
+    port,
     // 防止vue-router本地刷新404
     historyApiFallback: true,
     quiet: true
