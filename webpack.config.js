@@ -88,12 +88,15 @@ const baseConfig = {
         collapseWhitespace: true //删除空白符与换行符
       }
     }),
+    // 编译进度条显示
     new ProgressBarPlugin(),
+    // 编译完成通知
     new WebpackBuildNotifierPlugin({
       title: 'myCLI',
       // logo: path.resolve("./img/favicon.png"),
       suppressSuccess: true
     }),
+    //分析SPA插件
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true,
