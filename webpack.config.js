@@ -108,12 +108,21 @@ const baseConfig = {
     splitChunks: {
       cacheGroups: {
         commons: {
+          // 公共模块
           chunks: 'initial',
           name: 'common',
-          minChunks: 1,
+          minChunks: 1, // 最少引用几次 就抽离
           maxInitialRequests: 5,
           minSize: 0
         }
+        // 抽离第三方模块 如jquery等
+        // vendor: {
+        //   priority: 1, // 分配权重
+        //   test: /node_modules/,
+        //   chunks: 'initial',
+        //   minSize: 0,
+        //   minChunks: 1,
+        // }
       }
     },
     runtimeChunk: {
