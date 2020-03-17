@@ -12,7 +12,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const baseConfig = {
   entry: path.resolve(__dirname, './src/main.js'),
   stats: 'errors-warnings',
@@ -94,15 +94,10 @@ const baseConfig = {
       // logo: path.resolve("./img/favicon.png"),
       suppressSuccess: true
     }),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: [`You application is running here http://localhost:${port}`],
-        notes: ['编译完成,可以访问啦!!!!']
-      },
-      onErrors: function(severity, errors) {
-        console.error(severity)
-      },
-      clearConsole: true
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      statsOptions: { source: false }
     })
   ],
   // 分割代码

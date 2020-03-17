@@ -1,3 +1,7 @@
 # 我的 vue-cli
 
-## 持续完善中。。。。。
+## # npm install
+
+## # npm dev
+
+## # npm prod
