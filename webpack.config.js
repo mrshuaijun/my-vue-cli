@@ -13,6 +13,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier')
 const baseConfig = {
   entry: path.resolve(__dirname, './src/main.js'),
+  stats: 'errors-warnings',
   module: {
     rules: [
       {

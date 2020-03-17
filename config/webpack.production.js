@@ -1,6 +1,7 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const os = require('os')
 module.exports = {
+  mode: 'production',
   output: {
     filename: 'js/[name].[hash:5].bundles.js',
     publicPath: '/'
