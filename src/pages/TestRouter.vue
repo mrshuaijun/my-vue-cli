@@ -1,15 +1,17 @@
 <template>
-  <div>
-    这里是Router1
-  </div>
+  <div>这里是Router1</div>
 </template>
 
 <script>
 export default {
   data() {
-    return {}
-  }
-}
+    return {};
+  },
+  mounted() {
+    const fi = new Array(100).fill(12);
+    console.log(fi);
+  },
+};
 </script>
 
 <style></style>
